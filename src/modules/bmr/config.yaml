@@ -1,0 +1,115 @@
+# BMAD Research Module Configuration
+# Copy this to your project's /_bmad/bmr/config.yaml and customize
+
+module:
+  id: bmr
+  name: "BMAD Research"
+  version: "1.0.0"
+  description: "Collaborative research and report writing with agentic orchestration"
+
+# User Configuration
+user:
+  name: "Researcher"  # Your name for personalized interaction
+  skill_level: "intermediate"  # beginner, intermediate, advanced
+  preferences:
+    collaboration_mode: "guided"  # guided, autonomous, mixed
+    celebration_style: "subtle"  # subtle, moderate, enthusiastic
+
+# Language Settings
+communication_language: "en"  # Language for agent communication
+document_output_language: "en"  # Language for document output
+
+# Project Defaults
+defaults:
+  project_name: "untitled-research"
+  output_folder: "./research-output"
+  document_type: "research-proposal"  # grant-proposal, feasibility-study, academic-paper, concept-paper, research-proposal
+
+# Paths (relative to project root)
+paths:
+  templates: "_bmad/bmr/templates"
+  workflows: "_bmad/bmr/workflows"
+  agents: "_bmad/bmr/agents"
+  skills: "_bmad/bmr/skills"
+  harness: "_bmad/bmr/harness"
+
+# Active Project (updated by harness)
+active_project:
+  name: ""
+  path: ""
+  type: ""
+  status: ""
+  current_phase: ""
+  current_agent: ""
+
+# Harness Configuration
+harness:
+  enabled: true
+  background_compiler: true
+  auto_save: true
+  save_interval_seconds: 300
+  max_versions: 50
+
+  # Phase configuration
+  phases:
+    - id: discovery
+      name: "Discovery & Scoping"
+      lead_agent: research-guide
+    - id: research
+      name: "Research & Analysis"
+      lead_agent: research-analyst
+    - id: architecture
+      name: "Document Architecture"
+      lead_agent: document-architect
+    - id: drafting
+      name: "Collaborative Drafting"
+      lead_agent: content-writer
+    - id: review
+      name: "Review & Polish"
+      lead_agent: quality-reviewer
+    - id: compilation
+      name: "Final Compilation"
+      lead_agent: layout-designer
+
+# Citation Configuration
+citations:
+  default_style: "apa7"  # apa7, mla9, chicago, ieee, harvard
+  auto_format: true
+  validate_sources: true
+  database_file: "sources.yaml"
+
+# Output Configuration
+output:
+  formats:
+    - pdf
+    - docx
+    - markdown
+  include_toc: true
+  include_bibliography: true
+  include_appendices: true
+
+# Quality Standards
+quality:
+  min_sources: 10
+  readability_target: "professional"
+  coherence_check: true
+  citation_check: true
+  plagiarism_check: false  # Requires external service
+
+# Financial Module Settings (for grants/feasibility)
+financial:
+  currency: "USD"
+  include_indirect_costs: true
+  default_indirect_rate: 0.50
+  require_budget_narrative: true
+
+# Integration Settings
+integrations:
+  beon_memory: false  # Enable Beon for persistent memory
+  vercel_deploy: false  # Enable Vercel deployment for web output
+
+# Debug Settings
+debug:
+  verbose: false
+  log_transitions: true
+  save_interaction_log: true

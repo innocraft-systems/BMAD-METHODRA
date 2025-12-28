@@ -1,0 +1,139 @@
+# Source Database for AI Ethics in Healthcare Project
+
+sources:
+  - id: "obermeyer-2019"
+    type: "journal_article"
+    authors:
+      - "Obermeyer, Ziad"
+      - "Powers, Brian"
+      - "Vogeli, Christine"
+      - "Mullainathan, Sendhil"
+    title: "Dissecting racial bias in an algorithm used to manage the health of populations"
+    journal: "Science"
+    year: 2019
+    volume: 366
+    issue: 6464
+    pages: "447-453"
+    doi: "10.1126/science.aax2342"
+    themes:
+      - "ai-bias"
+    quality_score: 9
+    notes: "Landmark study on algorithmic bias in healthcare"
+    cited_in:
+      - "literature-review"
+      - "problem-statement"
+
+  - id: "topol-2019"
+    type: "book"
+    authors:
+      - "Topol, Eric"
+    title: "Deep Medicine: How Artificial Intelligence Can Make Healthcare Human Again"
+    publisher: "Basic Books"
+    year: 2019
+    isbn: "978-1541644632"
+    themes:
+      - "ai-bias"
+      - "stakeholder-trust"
+    quality_score: 8
+    notes: "Comprehensive overview of AI in healthcare"
+    cited_in:
+      - "introduction"
+
+  - id: "char-2018"
+    type: "journal_article"
+    authors:
+      - "Char, Danton S."
+      - "Shah, Nigam H."
+      - "Magnus, David"
+    title: "Implementing Machine Learning in Health Care—Addressing Ethical Challenges"
+    journal: "New England Journal of Medicine"
+    year: 2018
+    volume: 378
+    pages: "981-983"
+    doi: "10.1056/NEJMp1714229"
+    themes:
+      - "informed-consent"
+      - "regulatory-frameworks"
+    quality_score: 9
+    notes: "Key ethical framework paper"
+    cited_in:
+      - "literature-review"
+
+  - id: "fda-2021"
+    type: "report"
+    authors:
+      - "U.S. Food and Drug Administration"
+    title: "Artificial Intelligence/Machine Learning-Based Software as a Medical Device Action Plan"
+    year: 2021
+    url: "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device"
+    themes:
+      - "regulatory-frameworks"
+    quality_score: 8
+    notes: "Official FDA guidance on AI in medical devices"
+    cited_in: []
+
+  - id: "vayena-2018"
+    type: "journal_article"
+    authors:
+      - "Vayena, Effy"
+      - "Blasimme, Alessandro"
+      - "Cohen, I. Glenn"
+    title: "Machine learning in medicine: Addressing ethical challenges"
+    journal: "PLOS Medicine"
+    year: 2018
+    volume: 15
+    issue: 11
+    doi: "10.1371/journal.pmed.1002689"
+    themes:
+      - "informed-consent"
+      - "stakeholder-trust"
+    quality_score: 8
+    notes: "Good synthesis of ethical challenges"
+    cited_in:
+      - "literature-review"
+
+themes_synthesis:
+  ai-bias:
+    summary: |
+      Literature shows consistent evidence of algorithmic bias in healthcare AI,
+      particularly affecting minority populations. Key mechanisms include biased
+      training data and proxy variables that encode historical discrimination.
+    consensus:
+      - "Bias exists in many deployed healthcare algorithms"
+      - "Training data quality is critical"
+      - "Regular auditing is necessary"
+    debates:
+      - "Best methods for bias detection and mitigation"
+      - "Trade-offs between accuracy and fairness"
+    gaps:
+      - "Long-term patient outcomes from biased algorithms"
+
+  informed-consent:
+    summary: |
+      Emerging consensus that traditional consent models inadequate for AI
+      systems. Key challenges include explainability and dynamic nature of
+      ML models.
+    consensus:
+      - "Traditional consent models insufficient"
+      - "Transparency is essential"
+    debates:
+      - "What level of explanation is sufficient"
+      - "Role of human oversight in AI decisions"
+    gaps:
+      - "Patient understanding of AI explanations"
+      - "Consent for model updates"
+
+search_log:
+  - date: "2024-01-17"
+    database: "PubMed"
+    query: "(artificial intelligence OR machine learning) AND (healthcare OR medical) AND (ethics OR bias)"
+    results: 342
+    reviewed: 50
+    added: 8
+
+  - date: "2024-01-18"
+    database: "Google Scholar"
+    query: "AI healthcare informed consent"
+    results: 15600
+    reviewed: 30
+    added: 5

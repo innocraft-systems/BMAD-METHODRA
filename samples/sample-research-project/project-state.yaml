@@ -1,0 +1,131 @@
+# Sample Research Project State
+# This demonstrates the state management for BMR harness
+
+project:
+  id: "sample-ai-ethics-grant"
+  name: "AI Ethics in Healthcare"
+  description: "Grant proposal for studying ethical AI implementation in healthcare settings"
+  created: "2024-01-15T10:30:00Z"
+  modified: "2024-01-20T14:45:00Z"
+
+document:
+  type: "grant-proposal"
+  template: "_bmad/bmr/templates/grant-proposal.md"
+  target_length: 15000
+  current_length: 4200
+  target_sources: 25
+  deadline: "2024-03-01"
+
+phase:
+  current: "research"
+  previous: "discovery"
+  started: "2024-01-17T09:00:00Z"
+  phases_complete:
+    - discovery
+
+agents:
+  current: "research-analyst"
+  previous: "research-guide"
+  persona: "Morgan"
+  session_count: 5
+
+structure:
+  chapters:
+    - id: "executive-summary"
+      name: "Executive Summary"
+      status: "not_started"
+      target_words: 500
+
+    - id: "introduction"
+      name: "Introduction and Background"
+      status: "in_progress"
+      target_words: 2000
+      current_words: 800
+      sections:
+        - id: "problem-statement"
+          name: "Problem Statement"
+          status: "complete"
+          words: 400
+        - id: "research-gap"
+          name: "Research Gap"
+          status: "in_progress"
+          words: 400
+        - id: "significance"
+          name: "Significance"
+          status: "not_started"
+          words: 0
+
+    - id: "literature-review"
+      name: "Literature Review"
+      status: "in_progress"
+      target_words: 3000
+      current_words: 1500
+
+    - id: "methodology"
+      name: "Methodology"
+      status: "not_started"
+      target_words: 2500
+
+    - id: "expected-outcomes"
+      name: "Expected Outcomes"
+      status: "not_started"
+      target_words: 1500
+
+    - id: "timeline"
+      name: "Project Timeline"
+      status: "not_started"
+      target_words: 500
+
+    - id: "budget"
+      name: "Budget and Justification"
+      status: "not_started"
+      target_words: 2000
+
+    - id: "references"
+      name: "References"
+      status: "in_progress"
+
+research:
+  sources_collected: 18
+  sources_cited: 7
+  themes:
+    - id: "ai-bias"
+      name: "AI Bias in Medical Diagnosis"
+      sources: 6
+    - id: "informed-consent"
+      name: "Informed Consent for AI Systems"
+      sources: 5
+    - id: "regulatory-frameworks"
+      name: "Regulatory Frameworks"
+      sources: 4
+    - id: "stakeholder-trust"
+      name: "Stakeholder Trust"
+      sources: 3
+  gaps:
+    - "Limited research on patient perception of AI decisions"
+    - "Few studies on long-term ethical implications"
+
+checkpoints:
+  - id: "cp-001"
+    type: "phase_transition"
+    from_phase: "discovery"
+    to_phase: "research"
+    timestamp: "2024-01-17T09:00:00Z"
+    notes: "Scope defined, research questions established"
+
+  - id: "cp-002"
+    type: "section_complete"
+    section: "problem-statement"
+    timestamp: "2024-01-18T16:00:00Z"
+    notes: "Strong problem statement with clear gaps identified"
+
+preferences:
+  tone: "formal_but_accessible"
+  citation_style: "apa7"
+  detail_level: "comprehensive"
+  collaboration_mode: "guided"
+
+next_actions:
+  - "Complete literature synthesis for AI bias theme"
+  - "Identify 5-7 more sources for regulatory frameworks"
+  - "Draft significance section with Morgan"

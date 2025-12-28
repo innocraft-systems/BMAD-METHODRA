@@ -1,0 +1,121 @@
+code: bmr
+name: "BMR: BMAD Research & Reports"
+description: |
+  A collaborative research and report writing framework that transforms
+  the BMAD methodology for academic writing, grant proposals, feasibility
+  studies, and concept papers. Features an agentic harness that guides
+  users through research while compiling polished, illustrated reports
+  in the background.
+version: "1.0.0"
+default_selected: false
+
+# Document types supported
+document_types:
+  - grant_proposal
+  - feasibility_study
+  - concept_paper
+  - research_proposal
+  - academic_paper
+  - technical_report
+
+# Module configuration
+config:
+  # Project settings
+  project_name: "{{project_name}}"
+  research_topic: "{{research_topic}}"
+  document_type: "{{document_type}}"
+
+  # User settings
+  user_name: "{{user_name}}"
+  user_expertise_level: "beginner|intermediate|expert"
+  collaboration_style: "guided|autonomous|mixed"
+
+  # Output settings
+  output_folder: "{project-root}/_bmr-output"
+  research_artifacts: "{project-root}/_bmr-research"
+  draft_folder: "{project-root}/_bmr-drafts"
+
+  # Citation settings
+  citation_style: "APA|MLA|Chicago|Harvard|IEEE|Vancouver"
+  bibliography_format: "bibtex|json|yaml"
+
+  # Compilation settings
+  background_compilation: true
+  auto_illustrations: true
+  coherence_checking: true
+
+  # Integration settings
+  use_rag_search: true
+  use_web_research: true
+  use_financial_tools: true
+
+# Agent roster
+agents:
+  - research-guide      # Main collaborative facilitator
+  - document-architect  # Chapter/structure planner
+  - research-analyst    # Literature and synthesis
+  - content-writer      # Draft generation
+  - layout-designer     # Formatting and illustrations
+  - quality-reviewer    # Coherence and accuracy
+  - financial-analyst   # Budgets and projections
+
+# Skills (modular capabilities)
+skills:
+  - research-discovery
+  - academic-analysis
+  - financial-analysis
+  - citation-manager
+  - narrative-coherence
+  - illustration-design
+  - report-formatter
+  - source-validator
+
+# Harness configuration
+harness:
+  orchestrator: research-guide
+  background_compiler: true
+  checkpoint_frequency: "section"
+  collaboration_mode: "interactive"
+
+# Workflow phases (mapped from BMAD)
+phases:
+  phase_0_discovery:
+    name: "Discovery & Scoping"
+    description: "Define research questions, scope, and document type"
+    workflows:
+      - research-brief
+      - scope-definition
+
+  phase_1_research:
+    name: "Research & Analysis"
+    description: "Gather sources, analyze literature, build evidence base"
+    workflows:
+      - literature-review
+      - source-discovery
+      - data-analysis
+      - financial-modeling
+
+  phase_2_architecture:
+    name: "Document Architecture"
+    description: "Plan chapters, narrative structure, argument flow"
+    workflows:
+      - chapter-planning
+      - narrative-design
+      - outline-creation
+
+  phase_3_drafting:
+    name: "Collaborative Drafting"
+    description: "Write sections with agent guidance and feedback"
+    workflows:
+      - section-drafting
+      - coherence-review
+      - illustration-creation
+
+  phase_4_compilation:
+    name: "Compilation & Polish"
+    description: "Compile final document with formatting and citations"
+    workflows:
+      - report-compilation
+      - citation-formatting
+      - layout-finalization
+      - quality-assurance

@@ -1,0 +1,387 @@
+# Research Harness Configuration
+# Orchestrates collaborative research and background compilation
+
+harness:
+  id: bmr.harness.research
+  name: "BMAD Research Harness"
+  version: "1.0.0"
+  description: |
+    Agentic orchestration for collaborative research writing with
+    background document compilation.
+
+# Primary orchestrator
+orchestrator:
+  agent: research-guide
+  persona: Riley
+  role: primary_facilitator
+  responsibilities:
+    - Session management
+    - User collaboration
+    - Agent coordination
+    - Phase transitions
+    - Progress tracking
+
+# Specialist agents
+specialists:
+  document_architect:
+    agent: document-architect
+    persona: Sage
+    invocation_triggers:
+      - "plan chapters"
+      - "structure"
+      - "outline"
+      - "organize"
+      - "narrative design"
+    handoff_context:
+      - current_document_state
+      - research_brief
+      - user_preferences
+
+  research_analyst:
+    agent: research-analyst
+    persona: Morgan
+    invocation_triggers:
+      - "find sources"
+      - "literature"
+      - "research"
+      - "evidence"
+      - "what does the research say"
+    handoff_context:
+      - research_questions
+      - current_sources
+      - citation_database
+
+  content_writer:
+    agent: content-writer
+    persona: Quinn
+    invocation_triggers:
+      - "write"
+      - "draft"
+      - "compose"
+      - "create section"
+    handoff_context:
+      - section_outline
+      - evidence_for_section
+      - voice_guidelines
+      - current_drafts
+
+  layout_designer:
+    agent: layout-designer
+    persona: Harper
+    invocation_triggers:
+      - "format"
+      - "layout"
+      - "illustration"
+      - "diagram"
+      - "visualization"
+    handoff_context:
+      - document_type_requirements
+      - content_for_visualization
+      - style_guidelines
+
+  quality_reviewer:
+    agent: quality-reviewer
+    persona: Jordan
+    invocation_triggers:
+      - "review"
+      - "check"
+      - "validate"
+      - "proofread"
+      - "coherence"
+    handoff_context:
+      - full_document
+      - review_criteria
+      - previous_feedback
+
+  financial_analyst:
+    agent: financial-analyst
+    persona: Taylor
+    invocation_triggers:
+      - "budget"
+      - "costs"
+      - "financial"
+      - "projections"
+      - "cost-benefit"
+    handoff_context:
+      - financial_requirements
+      - project_scope
+      - funder_guidelines
+
+# Skill mappings
+skills:
+  - skill: research-discovery
+    primary_agent: research-analyst
+    supporting_agents: [research-guide]
+
+  - skill: academic-analysis
+    primary_agent: research-analyst
+    supporting_agents: [document-architect]
+
+  - skill: financial-analysis
+    primary_agent: financial-analyst
+    supporting_agents: [research-guide]
+
+  - skill: citation-manager
+    primary_agent: research-analyst
+    supporting_agents: [content-writer, quality-reviewer]
+
+  - skill: narrative-coherence
+    primary_agent: document-architect
+    supporting_agents: [quality-reviewer]
+
+  - skill: illustration-design
+    primary_agent: layout-designer
+    supporting_agents: [content-writer]
+
+  - skill: report-formatter
+    primary_agent: layout-designer
+    supporting_agents: [quality-reviewer]
+
+  - skill: source-validator
+    primary_agent: research-analyst
+    supporting_agents: [quality-reviewer]
+
+# Phase configuration
+phases:
+  discovery:
+    order: 1
+    name: "Discovery & Scoping"
+    lead: research-guide
+    collaboration_style: exploratory
+    checkpoints:
+      - research_brief_complete
+      - scope_defined
+    outputs:
+      - research_brief.md
+      - scope_document.md
+
+  research:
+    order: 2
+    name: "Research & Analysis"
+    lead: research-analyst
+    supporting: [research-guide, financial-analyst]
+    collaboration_style: deep_dive
+    checkpoints:
+      - sources_gathered
+      - literature_synthesized
+    outputs:
+      - literature_review.md
+      - source_database.yaml
+      - evidence_map.md
+
+  architecture:
+    order: 3
+    name: "Document Architecture"
+    lead: document-architect
+    supporting: [research-guide, research-analyst]
+    collaboration_style: strategic
+    checkpoints:
+      - outline_approved
+      - narrative_mapped
+    outputs:
+      - document_outline.md
+      - chapter_plan.md
+      - narrative_arc.md
+
+  drafting:
+    order: 4
+    name: "Collaborative Drafting"
+    lead: content-writer
+    supporting: [research-guide, research-analyst, layout-designer]
+    collaboration_style: focused
+    checkpoints:
+      - section_complete  # Per section
+      - chapter_complete  # Per chapter
+    outputs:
+      - section_drafts/
+      - integrated_document.md
+
+  review:
+    order: 5
+    name: "Review & Polish"
+    lead: quality-reviewer
+    supporting: [research-guide, content-writer, layout-designer]
+    collaboration_style: critical
+    checkpoints:
+      - coherence_verified
+      - citations_checked
+      - quality_approved
+    outputs:
+      - review_report.md
+      - revision_log.md
+      - polished_document.md
+
+  compilation:
+    order: 6
+    name: "Final Compilation"
+    lead: layout-designer
+    supporting: [research-guide]
+    collaboration_style: final
+    checkpoints:
+      - formatting_complete
+      - final_approved
+    outputs:
+      - final_document.pdf
+      - final_document.docx
+      - supporting_materials/
+
+# Background compiler configuration
+background_compiler:
+  enabled: true
+
+  triggers:
+    - event: content_added
+      action: merge_content
+    - event: citation_inserted
+      action: update_bibliography
+    - event: figure_created
+      action: insert_figure
+    - event: structure_changed
+      action: rebuild_toc
+
+  tasks:
+    merge_content:
+      description: "Merge new content into document"
+      frequency: immediate
+
+    update_bibliography:
+      description: "Update reference list"
+      frequency: immediate
+
+    insert_figure:
+      description: "Insert and number figure"
+      frequency: immediate
+
+    rebuild_toc:
+      description: "Regenerate table of contents"
+      frequency: on_structure_change
+
+    update_metrics:
+      description: "Update progress metrics"
+      frequency: every_5_minutes
+
+    create_backup:
+      description: "Create backup version"
+      frequency: every_15_minutes
+
+  versioning:
+    auto_save_interval: 300  # seconds
+    checkpoint_on_milestone: true
+    keep_history: true
+    max_versions: 50
+
+# Checkpoint configuration
+checkpoints:
+  section_checkpoint:
+    trigger: section_draft_complete
+    actions:
+      - save_state
+      - update_metrics
+      - compile_section
+    user_interaction: optional
+
+  chapter_checkpoint:
+    trigger: chapter_complete
+    actions:
+      - coherence_check
+      - citation_verify
+      - compile_chapter
+      - celebrate_progress
+    user_interaction: encouraged
+
+  phase_checkpoint:
+    trigger: phase_transition
+    actions:
+      - phase_summary
+      - quality_assessment
+      - plan_next_phase
+    user_interaction: required
+
+  milestone_checkpoint:
+    trigger: major_achievement
+    actions:
+      - celebration
+      - generate_preview
+      - update_timeline
+    user_interaction: celebration
+
+# Collaboration modes
+collaboration:
+  default_mode: guided
+
+  modes:
+    guided:
+      description: "Agent leads, user responds"
+      agent_initiative: high
+      user_decision_points: frequent
+      best_for: [new_users, complex_decisions]
+
+    autonomous:
+      description: "Agent works, user reviews"
+      agent_initiative: very_high
+      user_decision_points: phase_boundaries
+      best_for: [experienced_users, clear_requirements]
+
+    mixed:
+      description: "Adaptive based on context"
+      agent_initiative: contextual
+      user_decision_points: adaptive
+      best_for: [most_projects]
+
+# Progress tracking
+progress:
+  metrics:
+    - name: sections_complete
+      display: "Sections"
+      format: "X/Y"
+    - name: words_written
+      display: "Words"
+      format: "X,XXX"
+    - name: sources_cited
+      display: "Sources"
+      format: "XX"
+    - name: figures_created
+      display: "Figures"
+      format: "X"
+    - name: quality_score
+      display: "Quality"
+      format: "X/10"
+
+  celebrations:
+    - milestone: first_section
+      message: "First section complete! You're on your way."
+    - milestone: literature_done
+      message: "Research phase complete! Strong foundation built."
+    - milestone: outline_approved
+      message: "Blueprint ready! Time to bring it to life."
+    - milestone: draft_25_percent
+      message: "Quarter of the way there! Great momentum."
+    - milestone: draft_50_percent
+      message: "Halfway point! The story is taking shape."
+    - milestone: draft_75_percent
+      message: "Three quarters done! Home stretch ahead."
+    - milestone: draft_complete
+      message: "Draft complete! Now let's polish it."
+    - milestone: final_complete
+      message: "Congratulations! Your document is ready."
+
+# Output configuration
+output:
+  formats:
+    - pdf
+    - docx
+    - markdown
+    - html
+
+  artifacts:
+    primary:
+      - final_document
+      - executive_summary
+    supporting:
+      - bibliography
+      - appendices
+      - figures_archive
+    process:
+      - research_notes
+      - source_database
+      - revision_history
